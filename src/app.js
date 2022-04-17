@@ -1,7 +1,6 @@
 const express = require("express");
 const session = require('express-session');
 const SQLStorage = require('express-mysql-session');
-const mariaDB = require('mariadb');
 const path = require('path');
 const credentials = require('../credentials/db.js');
 

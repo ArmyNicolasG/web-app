@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cuenta</title>
+    <link rel="stylesheet" href="http://localhost:3000/css">
+    <title>SCrear Cuenta</title>
 </head>
 <body>
-    
     <navbar class="nav">
         <img src="https://thumbs.dreamstime.com/b/deja-la-plantilla-del-dise%C3%B1o-logotipo-que-hace-compras-icono-de-tienda-135610500.jpg" width="57.5px" height="57.5px">
         <ul class="nav-list">
@@ -21,12 +21,17 @@
             <% } %>
         </ul>
     </navbar>
-
-    <h1>Tu cuenta:</h1>
-    <% if (user_data) { %>
-        <p>Email: <%= user_data.email %></p>
+    <% if (!user_data) { %>
+    <form id="signup-form">
+        <input type="text" autocomplete="off" class="text-input" name="name" placeholder="Nombres">
+        <input type="text" autocomplete="off" class="text-input" name="lastname" placeholder="Apellidos">
+        <input type="number" autocomplete="off" class="text-input" name="age" placeholder="Edad">
+        <input type="email" autocomplete="off" class="text-input" name="email" placeholder="Email">
+        <input type="password" name="password" class="text-input" placeholder="Password">
+        <input class="button" type="submit" value="Register">
+    </form>
     <% } else { %>
-        <p>No autenticado</p>
+        <h1>Debes cerrar la sesión actual para poder crear una nueva cuenta</h1>
     <% } %>
 </body>
 <style>
@@ -70,5 +75,28 @@ body {
 
 /*END NAVBAR*/
 
+/*INPUTS*/
+.text-input{
+    padding: 8px;
+    /*border-radius: 10px;*/
+    outline: none;
+    width: 15em;
+    border: none;
+    background-color: rgba(208, 208, 208, 0.786);
+}
+.text-input:focus{
+    background-color: rgba(228, 225, 225, 0.786);
+}
+.text-input:hover{
+    background-color: rgba(228, 225, 225, 0.786);
+}
+
+/*END INPUTS*/
 </style>
+<script>
+var formElement = document.getElementById("signup-form");
+var request = new XMLHttpRequest();
+request.open("POST", "http://localhost:3000/new-account");
+request.send(new FormData(formElement));
+</script>
 </html>
