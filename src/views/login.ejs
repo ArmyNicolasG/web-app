@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://localhost:3000/css">
+    <title>Login</title>
+</head>
+<body>
+    <navbar class="nav">
+        <img src="https://thumbs.dreamstime.com/b/deja-la-plantilla-del-dise%C3%B1o-logotipo-que-hace-compras-icono-de-tienda-135610500.jpg" width="57.5px" height="57.5px">
+        <ul class="nav-list">
+            <li class="nav-list__item"><a href="http://localhost:3000/">Inicio</a></li>
+            <li class="nav-list__item"><a href="http://localhost:3000/">Carrito</a></li>
+            <li class="nav-list__item"><a href="http://localhost:3000/">Catálogo</a></li>
+            <% if (user_data) { %>
+                <li class="nav-list__item"><a href="http://localhost:3000/profile">Cuenta</a></li>
+            <% } else { %>
+                <li class="nav-list__item"><a href="http://localhost:3000/login">Iniciar sesión</a></li>
+            <% } %>
+        </ul>
+    </navbar>
+    <form action="/register" method="post">
+        <input type="email" autocomplete="off" class="text-input" name="email" placeholder="Email">
+        <input type="password" name="password" class="text-input" placeholder="Password">
+        <input class="button" type="submit" value="Register">
+    </form>
+</body>
+<style>
+    :root {
+    --main-color: rgb(150, 255, 255);
+    --secondary-color: rgb(255, 213, 134);
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+/*NAVBAR*/
+
+.nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: var(--main-color);
+}
+
+.nav-list{
+    display: flex;
+    flex-direction: row;
+}
+
+.nav-list__item{
+    list-style: none;
+    font-size: 20px;
+}
+
+.nav-list__item a {
+    text-decoration: none;
+    color: black;
+    padding: 20px;
+}
+.nav-list__item a:hover {
+    background-color: var(--secondary-color);
+}
+
+/*END NAVBAR*/
+
+/*INPUTS*/
+.text-input{
+    padding: 8px;
+    /*border-radius: 10px;*/
+    outline: none;
+    width: 15em;
+    border: none;
+    background-color: rgba(208, 208, 208, 0.786);
+}
+.text-input:focus{
+    background-color: rgba(228, 225, 225, 0.786);
+}
+.text-input:hover{
+    background-color: rgba(228, 225, 225, 0.786);
+}
+
+/*END INPUTS*/
+</style>
+</html>

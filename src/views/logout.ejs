@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logout</title>
+</head>
+<body>
+
+    <navbar class="nav">
+        <img src="https://thumbs.dreamstime.com/b/deja-la-plantilla-del-dise%C3%B1o-logotipo-que-hace-compras-icono-de-tienda-135610500.jpg" width="57.5px" height="57.5px">
+        <ul class="nav-list">
+            <li class="nav-list__item"><a href="http://localhost:3000/">Inicio</a></li>
+            <li class="nav-list__item"><a href="http://localhost:3000/">Carrito</a></li>
+            <li class="nav-list__item"><a href="http://localhost:3000/">Catálogo</a></li>
+            <% if (user_data) { %>
+                <li class="nav-list__item"><a href="http://localhost:3000/profile">Cuenta</a></li>
+            <% } else { %>
+                <li class="nav-list__item"><a href="http://localhost:3000/login">Iniciar sesión</a></li>
+            <% } %>
+        </ul>
+    </navbar>
+
+    <% if (user_data) { %>
+        <p>¿Está seguro de que desea cerrar la sesión del correo: <%= user_data.email %>? Deberá ingresar la contraseña:</p>
+        <form action="/close_session" method="post">
+            <input type="password" name="password">
+            <input type="submit" value="Confirmar">
+        </form>
+    <% } else {%>
+        <p>No se encontraron sesiones abiertas</p>
+    <% } %>
+</body>
+<style>
+    :root {
+    --main-color: rgb(150, 255, 255);
+    --secondary-color: rgb(255, 213, 134);
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+/*NAVBAR*/
+
+.nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: var(--main-color);
+}
+
+.nav-list{
+    display: flex;
+    flex-direction: row;
+}
+
+.nav-list__item{
+    list-style: none;
+    font-size: 20px;
+}
+
+.nav-list__item a {
+    text-decoration: none;
+    color: black;
+    padding: 20px;
+}
+.nav-list__item a:hover {
+    background-color: var(--secondary-color);
+}
+
+/*END NAVBAR*/
+
+</style>
+</html>
