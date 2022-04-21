@@ -21,11 +21,17 @@
             <% } %>
         </ul>
     </navbar>
+    <% if (!user_data) { %>
     <form action="/new-login" method="post">
         <input type="email" autocomplete="off" class="text-input" name="email" placeholder="Email">
         <input type="password" name="password" class="text-input" placeholder="Password">
-        <input class="button" type="submit" value="Register">
+        <input class="button" type="submit" value="Iniciar sesión">
     </form>
+    <% } else { %>
+        <h2>Debes cerrar la sesión actual para poder iniciar una nueva sesión.</h2>
+        <a href="http://localhost:3000/logout" class="btn">Cerrar sesión</a>
+    <% } %>
+    <a href="http://localhost:3000/register" class="btn">Crear cuenta</a>
 </body>
 <style>
     :root {
@@ -84,6 +90,14 @@ body {
     background-color: rgba(228, 225, 225, 0.786);
 }
 
+.btn{
+    padding: 12px;
+    font-size: 15px;
+    background-color: var(--secondary-color);
+    text-decoration: none;
+    color: black;
+    border-radius: 8px;
+}
 /*END INPUTS*/
 </style>
 </html>

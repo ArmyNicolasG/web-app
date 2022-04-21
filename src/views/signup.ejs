@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="http://localhost:3000/css">
     <title>SCrear Cuenta</title>
 </head>
 <body>
@@ -22,16 +21,19 @@
         </ul>
     </navbar>
     <% if (!user_data) { %>
-    <form id="signup-form">
-        <input type="text" autocomplete="off" class="text-input" name="name" placeholder="Nombres">
-        <input type="text" autocomplete="off" class="text-input" name="lastname" placeholder="Apellidos">
-        <input type="number" autocomplete="off" class="text-input" name="age" placeholder="Edad">
-        <input type="email" autocomplete="off" class="text-input" name="email" placeholder="Email">
+    <form action="/new-account" method="post" id="signup-form">
+        <input type="text" class="text-input" name="name" placeholder="Nombres">
+        <input type="text" class="text-input" name="lastname" placeholder="Apellidos">
+        <input type="number" class="text-input" name="age" placeholder="Edad">
+        <input type="email" class="text-input" name="email" placeholder="Email">
         <input type="password" name="password" class="text-input" placeholder="Password">
-        <input class="button" type="submit" value="Register">
+        <input class="button" type="submit" value="Register" id="submit-button">
     </form>
     <% } else { %>
         <h1>Debes cerrar la sesión actual para poder crear una nueva cuenta</h1>
+    <% } %>
+    <% if (message) { %>
+        <p><%= message %></p>
     <% } %>
 </body>
 <style>
@@ -92,11 +94,16 @@ body {
 }
 
 /*END INPUTS*/
+
 </style>
 <script>
-var formElement = document.getElementById("signup-form");
-var request = new XMLHttpRequest();
-request.open("POST", "http://localhost:3000/new-account");
-request.send(new FormData(formElement));
+    //document.getElementById("submit-button").addEventListener('click', () => {
+        //let form = new FormData(document.getElementById('signup-form'));
+        //fetch('http://localhost:3000/new-account', {
+            //method : 'POST',
+            //body : form,
+            //headers : { 'Content-Type' : 'application/x-www-form-urlencoded' }
+        //}).then( res => res.json()).then( json => console.log(json)).catch( err => console.warn('Error: ' + err));
+    //});
 </script>
 </html>

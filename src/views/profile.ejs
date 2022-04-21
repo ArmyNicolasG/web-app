@@ -28,6 +28,10 @@
     <% } else { %>
         <p>No autenticado</p>
     <% } %>
+    <% if (message) { %>
+        <p><%= message %></p>
+    <% } %>
+    <a href="http://localhost:3000/logout">Cerrar sesión</a>
 </body>
 <style>
     :root {

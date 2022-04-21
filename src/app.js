@@ -2,7 +2,7 @@ const express = require("express");
 const session = require('express-session');
 const SQLStorage = require('express-mysql-session');
 const path = require('path');
-const credentials = require('../credentials/db.js');
+const credentials = require('./credentials/db.js');
 
 const app = express();
 
@@ -36,4 +36,5 @@ app.use(require('./routes/index.js'));
 
 
 app.listen(3000);
-console.log('Server on port: ' + 3000)
+console.log('Server on port: ' + 3000);
+module.exports = credentials;
